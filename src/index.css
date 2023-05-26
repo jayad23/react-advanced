@@ -34,6 +34,7 @@ body {
   min-height: 100vh;
   background: rgb(172,179,236);
   background: linear-gradient(350deg, rgba(172,179,236,1) 0%, rgba(2,252,163,0.14331670168067223) 96%);
+  overflow-x: scroll;
 }
 
 h1 {
@@ -57,7 +58,8 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /*outline: 4px auto -webkit-focus-ring-color;*/
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {

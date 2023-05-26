@@ -1,39 +1,29 @@
-import {Accordion} from "@components/accordion/Accordion";
+import { useNavigate } from "react-router-dom";
+import { SectionCardProps, topics } from "./types";
+import {SectionCard} from "@components/section-card/SectionCard";
+import { AiOutlineHome } from "react-icons/ai";
 import "../shared.css";
+import {Fragment} from "react";
 
-const topics = [
-  {
-    title: "1. Patrones de Diseño",
-    content: ["Container/Presentation", "Single Responsibility Principle", "Folder Scaffolding"],
-    link: "/temario/patrones_diseño"
-  },
-  {
-    title: "2. Router & Providers",
-    content: ["Rutas protegidas vs Rutas Públicas", "Outlet & Layout Design", "Error Handler & 404 pages"],
-    link: "/temario/router_providers"
-  },
-  {
-    title: "3. Code Splitting",
-    content: ["Lazy loading", "Suspense", "Dynamic importing"],
-    link: "/temario/code_splitting"
-  },
-  {
-    title: "4. Styled Components",
-    content: ["Basic Styling", "Props & Condicionales", "GlobalCSS"],
-    link: "/temario/styled_components"
-  },
-  {
-    title: "5. HTTP requests",
-    content: ["Controller Object", "React Query"],
-    link: "/temario/http_requests"
-  }
-];
+
 
 const Topics = () => {
+  const navigate = useNavigate();
   return (
     <section>
-      <h2>Temario:</h2>
-      <Accordion data={topics }/>
+      <article style={{ display: "flex", justifyContent: "center", textAlign: "center", alignItems: "center", gap: "10px"}}>
+        <h2>Temario:</h2>
+        <button onClick={() => navigate("/")}>
+          <AiOutlineHome />
+        </button>
+      </article>
+      <article style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px", alignItems: "flex-start"}}>
+        {
+          topics.map((element:SectionCardProps, idx: number) => (
+            <SectionCard key={idx} {...element} />
+          ))
+        }
+      </article>
     </section>
   )
 }
