@@ -7,7 +7,7 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <section>
+    <section className="welcome-container">
       <article>
         <a href="https://www.hackaboss.com/" target="_blank">
           <img src={hackBossLogo} className="logo" alt="Vite logo" />

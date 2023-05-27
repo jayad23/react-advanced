@@ -1,43 +1,46 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import {TopicContent, TopicContentProps } from "@components/topicContent";
+import {TopicContentProps } from "@components/topicContent";
+import EditorContainer from "./transitional";
 import "../shared.css";
 
 interface Content extends TopicContentProps {
   title: string;
 }
 
-const Topic = () => {
-  const { state: content } = useLocation();
-  const [tab, setTab] = useState(JSON.parse(localStorage.getItem("tabSelected") as string) || { title: "", index: 0 });
+interface StateProps { title: string; content: Content }
 
-  const handleTabSelected = (ttl: string, idx: number) => {
-    localStorage.setItem("tabSelected", JSON.stringify({ title: ttl, index: idx }))
-    setTab({ title: ttl, index: idx });
-  };
+const Topic = () => {
+  const { state: content }: { state: StateProps } = useLocation();
 
   return (  
-    <div style={{ backgroundColor: "#fff", padding: "20px", width: "900px", border: "2px solid #eee", borderRadius:"8px"}}>
-      <div style={{ display: "flex", width: "100%", justifyContent: "center", alignItems: "center", textAlign: "center"}}>
-        {
-          content.map((item: Content, idx: number) => (
-            <div 
-              key={idx} 
-              style={{ padding: "5px", border: "1px solid #eee", cursor: "pointer", width:`${100/3}%`}}
-              onClick={() => handleTabSelected(item.title, idx)}
-            >
-              {item.title}
-            </div>
-          ))
-        }
+    <div style={{ 
+        width: "100vw", 
+        height: "100vh", 
+        display: "flex", 
+        justifyContent: "space-between", 
+        overflow: "hidden"
+      }}
+    >
+      <div style={{ 
+        width: "50%", 
+        padding: "10px", 
+        overflow: "scroll", 
+        borderRadius: "5px",
+        borderRight: "1px solid #eee",
+        backgroundColor: "#282C34",
+        color: "rgba(255, 255, 255, 0.87)"
+        }}
+      >
+        <h3>{content.title}</h3>
+        <div style={{ textAlign: "left"}}>
+          <p>{JSON.stringify(content)}</p>
+        </div>
       </div>
-      {
-        content[tab.index].development.map((topic: TopicContentProps) => (
-          <TopicContent {...topic} />
-        ))
-      }
+      <EditorContainer />
     </div>
   )
 }
 
 export default Topic;
+
