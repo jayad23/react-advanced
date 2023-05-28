@@ -1,9 +1,10 @@
-export interface TopicContentProps { definition: string; image?: string; urlLink?: string;}
+import parse from 'html-react-parser';
+export interface TopicContentProps { definition: string; image?: string; urlLink?: string; title: string; }
 
 export const TopicContent = (props: TopicContentProps) => {
   return (
-    <div style={{ border: "2px solid #eee", padding: "10px"}}>
-      {JSON.stringify(props)}
+    <div style={{ padding: "10px"}}>
+      {parse(props.definition)}
     </div>
   )
 };

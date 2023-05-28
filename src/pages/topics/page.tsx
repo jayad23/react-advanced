@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { SectionCardProps, topics } from "./types";
+import { SectionCardProps } from "./types";
+
 import {SectionCard} from "@components/section-card/SectionCard";
 import { AiOutlineHome } from "react-icons/ai";
-import { CustomArticle, CustomSection } from "./styled";
+import { CustomArticle, CustomSection, SectionCardContainer } from "./styled";
 import "../shared.css";
-
-
+import {topics} from "@topics/db";
 
 const Topics = () => {
   const navigate = useNavigate();
@@ -17,13 +17,13 @@ const Topics = () => {
           <AiOutlineHome />
         </button>
       </CustomArticle>
-      <article style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px", alignItems: "flex-start"}}>
+      <SectionCardContainer>
         {
           topics.map((element:SectionCardProps, idx: number) => (
             <SectionCard key={idx} {...element} />
           ))
         }
-      </article>
+      </SectionCardContainer>
     </CustomSection>
   )
 }

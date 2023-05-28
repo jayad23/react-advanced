@@ -10,6 +10,9 @@
       ],
       "@types/*": [
         "./src/types/*"
+      ],
+      "@topics/*": [
+        "./src/topics/*"
       ]
     },
     "lib": [

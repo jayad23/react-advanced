@@ -4,6 +4,7 @@ import "./style.css";
 import {SectionCardProps, Content} from '@pages/topics/types';
 
 type Arguments = { content: Content; title: string };
+const classNames = ["information-filter", "information-top", "information-right", "information-bottom", "information-left"];
 
 export const SectionCard = ({ title, content, image, link }: SectionCardProps) => {
   const navigate  = useNavigate();
@@ -17,11 +18,11 @@ export const SectionCard = ({ title, content, image, link }: SectionCardProps) =
   return (
     <div className='information-card' onClick={() => handleNavigation(link, {content, title })}>
       <div className='information-desc'><p>{title}</p></div>
-      <div className='information-filter'></div>
-      <div className='information-top'></div>
-      <div className='information-right'></div>
-      <div className='information-bottom'></div>
-      <div className='information-left'></div>
+      {
+        classNames.map((cls: string) => (
+          <div key={cls} className={cls}></div>
+        ))
+      }
       <img src={image}/>
     </div>
   );

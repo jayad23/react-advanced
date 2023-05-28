@@ -1,44 +1,36 @@
-import React, { useState } from "react";
+//import {useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
 import {TopicContentProps } from "@components/topicContent";
+import {DefinitionContainer, PageContainer, StickyTitle} from "./styled";
 import EditorContainer from "./transitional";
+import Development from "./development";
 import "../shared.css";
 
-interface Content extends TopicContentProps {
+interface Content {
   title: string;
+  development: Array<TopicContentProps>;
 }
 
-interface StateProps { title: string; content: Content }
+interface StateProps { title: string; content: Array<Content> }
 
 const Topic = () => {
   const { state: content }: { state: StateProps } = useLocation();
+  const development = content.content;
 
   return (  
-    <div style={{ 
-        width: "100vw", 
-        height: "100vh", 
-        display: "flex", 
-        justifyContent: "space-between", 
-        overflow: "hidden"
-      }}
-    >
-      <div style={{ 
-        width: "50%", 
-        padding: "10px", 
-        overflow: "scroll", 
-        borderRadius: "5px",
-        borderRight: "1px solid #eee",
-        backgroundColor: "#282C34",
-        color: "rgba(255, 255, 255, 0.87)"
-        }}
-      >
-        <h3>{content.title}</h3>
+    <PageContainer>
+      <DefinitionContainer>
+        <StickyTitle>{content.title}</StickyTitle>
         <div style={{ textAlign: "left"}}>
-          <p>{JSON.stringify(content)}</p>
+          {
+            development.map((lesson: Content, idx: number) => (
+              <Development key={idx} {...lesson} />
+            ))
+          }
         </div>
-      </div>
+      </DefinitionContainer>
       <EditorContainer />
-    </div>
+    </PageContainer>
   )
 }
 

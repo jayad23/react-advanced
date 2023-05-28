@@ -1,10 +1,13 @@
 import { styled } from "styled-components";
-/**
- * border: "2px solid #eee", 
-        minWidth: "100%", 
-        height: "100vh", 
-        width: "100vw"
- */
+
+export const SectionCardContainer = styled("article")`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  align-items: flex-start;
+`;
+
 export const CustomArticle = styled("article")`
   display: flex;
   justify-content: center;
@@ -19,4 +22,7 @@ export const CustomSection = styled("section")`
   min-width: 100%;
   height: 100vh;
   width: 100vw;
+  @media(prefers-color-scheme: dark){
+    border: 2px solid #282c34;
+  }
 `;

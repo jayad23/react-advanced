@@ -42,3 +42,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media (prefers-color-scheme: dark){
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #55cbd2da);
+  }
+}
