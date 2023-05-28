@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Editor from '@components/editor/Editor';
 import { IoCloseSharp } from "react-icons/io5";
 import { IconContainer, StyledEditorContainer, TextContainer } from './styled';
@@ -36,31 +36,31 @@ const EditorContainer = () => {
     toast.error("Solo puedes cerrar un editor")
   };
 
-  //const [injectedBtnOne, setInjectedOne] = useState<Element | null>(null);
-  //const [injectedBtnTwo, setInjectedTwo] = useState<Element | null>(null);
+  const [injectedBtnOne, setInjectedOne] = useState<Element | null>(null);
+  const [injectedBtnTwo, setInjectedTwo] = useState<Element | null>(null);
 
-  // useEffect(() => {
-  //   const btnOne = document.querySelector(".one");
-  //   setInjectedOne(btnOne)
-  //   const btnTwo = document.querySelector(".two");
-  //   setInjectedTwo(btnTwo);
-  //   return () => {
-  //     btnOne?.removeEventListener("click", () => injectedBtnOne);
-  //     btnTwo?.removeEventListener("click", () => injectedBtnTwo);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const btnOne = document.querySelector(".one");
+    setInjectedOne(btnOne)
+    const btnTwo = document.querySelector(".two");
+    setInjectedTwo(btnTwo);
+    return () => {
+      btnOne?.removeEventListener("click", () => injectedBtnOne);
+      btnTwo?.removeEventListener("click", () => injectedBtnTwo);
+    }
+  }, []);
 
-  // injectedBtnOne?.addEventListener("click", () => {
-  //   const { template } = templateGenerator("functional-component-example");
-  //   localStorage.setItem("valueOne", JSON.stringify(template));
-  //   setValueOne(template);
-  // });
+  injectedBtnOne?.addEventListener("click", () => {
+    const { template } = templateGenerator("functional-component-example");
+    localStorage.setItem("valueOne", JSON.stringify(template));
+    setValueOne(template);
+  });
 
-  // injectedBtnTwo?.addEventListener("click", () => {
-  //   const { template } = templateGenerator("class-component-example");
-  //   localStorage.setItem("valueTwo", JSON.stringify(template));
-  //   setValueTwo(template);
-  // });
+  injectedBtnTwo?.addEventListener("click", () => {
+    const { template } = templateGenerator("class-component-example");
+    localStorage.setItem("valueTwo", JSON.stringify(template));
+    setValueTwo(template);
+  });
 
   return (
     <StyledEditorContainer>

@@ -1,7 +1,7 @@
 //import React from 'react'
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { nord } from '@uiw/codemirror-theme-nord';
+//import { nord } from '@uiw/codemirror-theme-nord';
 
 const Editor = ({ value, onChange }: any) => {
 
