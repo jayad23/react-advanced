@@ -2,7 +2,7 @@ import {Dispatch,  RefObject} from "react";
 
 export interface AccordionDataProps {
   title: string;
-  content: Array<string>;
+  content: Array<{ definition: string; image?: string; linkUrl?: string }>;
   link: string;
 }
 

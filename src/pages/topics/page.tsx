@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { SectionCardProps } from "./types";
-
 import {SectionCard} from "@components/section-card/SectionCard";
 import { AiOutlineHome } from "react-icons/ai";
 import { CustomArticle, CustomSection, SectionCardContainer } from "./styled";

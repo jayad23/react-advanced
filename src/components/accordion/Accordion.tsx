@@ -66,8 +66,8 @@ const AccordionItems = ({
             </AccordionTitle>
             <AccordionBody active={currentAccordion === i} bodyHeight={bodyHeight}>
               <AccordionContent ref={refs[i]}>
-                {content.map((item: string, i: number) => (
-                  <li key={i}>{item}</li>
+                {content.map((item: any, i: number) => (
+                  <li key={i}>{JSON.stringify(item)}</li>
                 ))}
               </AccordionContent>
             </AccordionBody>
