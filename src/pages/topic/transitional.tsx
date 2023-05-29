@@ -62,16 +62,22 @@ const EditorContainer = () => {
     const classComponentButton = document.querySelector(".two");
     const hocComponentButton = document.querySelector(".hoc");
     const compComponentButton = document.querySelector(".comp");
+    const modalComponentButton = document.querySelector(".ptrl");
+    const incrustadosComponentButton = document.querySelector(".incrustados");
     functionalComponentButton?.addEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
     classComponentButton?.addEventListener("click", () => handleInjectedButton("class-component-example", "two"));
     hocComponentButton?.addEventListener("click", () => handleInjectedButton("hoc", "one"));
     compComponentButton?.addEventListener("click", () => handleInjectedButton("comp", "two"));
+    modalComponentButton?.addEventListener("click", () => handleInjectedButton("ptrl", "one"));
+    incrustadosComponentButton?.addEventListener("click", () => handleInjectedButton("incrustados", "two"));
 
     return () => {
       functionalComponentButton?.removeEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
       classComponentButton?.removeEventListener("click", () => handleInjectedButton("class-component-example", "two"));
       hocComponentButton?.removeEventListener("click", () => handleInjectedButton("hoc", "one"));
       compComponentButton?.removeEventListener("click", () => handleInjectedButton("comp", "two"));
+      modalComponentButton?.removeEventListener("click", () => handleInjectedButton("ptrl", "one"));
+      incrustadosComponentButton?.removeEventListener("click", () => handleInjectedButton("incrustados", "two"));
     }
   }, []);
 

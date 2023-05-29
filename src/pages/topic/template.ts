@@ -186,6 +186,68 @@ ReactDOM.render(<App />, document.getElementById('root'));
       `
     }
   }
+  case "ptrl": {
+    return {
+      template: `
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Modal extends React.Component {
+  render() {
+    return ReactDOM.createPortal(
+      this.props.children,
+      document.getElementById('modal-root')
+    );
+  }
+}
+
+// Uso del componente Modal
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Aplicación de Ejemplo</h1>
+        <Modal>
+          <p>Contenido del modal</p>
+        </Modal>
+      </div>
+    );
+  }
+}
+      `
+    }
+  }
+  case "incrustados": {
+    return {
+      template: `
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class VideoPlayer extends React.Component {
+  render() {
+    return ReactDOM.createPortal(
+      <div>
+        <video src="video.mp4" controls />
+      </div>,
+      document.getElementById('video-player')
+    );
+  }
+}
+
+// Uso del componente VideoPlayer
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Aplicación de Ejemplo</h1>
+        <div id="video-player"></div>
+      </div>
+    );
+  }
+}
+      `
+    }
+  }
   default:
     return {
       template: "// (Editor 1.) Empieza tu código aquí!"

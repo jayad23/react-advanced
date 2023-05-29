@@ -1,13 +1,8 @@
-import { U1L1, U1L2 } from "./unit-one";
+import { U1L1, U1L2, U1L3 } from "./unit-one";
 export const topics = [
   {
     title: "1. Introducción a conceptos básicos de React",
-    content: [U1L1, U1L2, {
-        title: "Folder Scaffolding", 
-        development:[
-          { definition: "Folder Scaffolding", image: ""}
-        ]
-      }],
+    content: [U1L1, U1L2, U1L3],
     link: "/temario/patrones_diseño",
     image: "https://img.freepik.com/free-vector/abstract-chaotic-circles-design-pattern-background_1048-16639.jpg"
   },

@@ -109,3 +109,7 @@ button:focus-visible {
   font-size: 12px;
   color: #bad5eeec;
 }
+
+.injected-list > li {
+  margin-left: 20px;
+}
