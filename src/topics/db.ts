@@ -6,7 +6,7 @@ export const topics = [
         title: "Single Responsibility Principle", 
         development:[
           { definition: "Single Responsibility", image: ""}
-        ]
+        ],
       }, {
         title: "Folder Scaffolding", 
         development:[

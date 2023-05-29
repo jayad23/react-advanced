@@ -1,7 +1,8 @@
 import {Fragment} from 'react'
-//import parse from 'html-react-parser';
+import { IoMdArrowRoundBack } from "react-icons/io";
 import {TopicContent, TopicContentProps} from '@components/topicContent';
-import {CustomDevelopmentTitle} from './styled';
+import {CustomDevelopmentTitle, SecondIconContainer} from './styled';
+import {useNavigate} from 'react-router-dom';
 
 export interface DevelopmentProps {
   title: string;
@@ -9,9 +10,13 @@ export interface DevelopmentProps {
 }
 
 const Development = ({title, development }: DevelopmentProps) => {
+  const navigate = useNavigate();
   return (
     <Fragment>
       <CustomDevelopmentTitle>{title}</CustomDevelopmentTitle>
+      <SecondIconContainer onClick={() => navigate(-1)}>
+        <IoMdArrowRoundBack />
+      </SecondIconContainer>
       {
         development.map((item: TopicContentProps, idx: number) => (
           <TopicContent key={idx} {...item} />

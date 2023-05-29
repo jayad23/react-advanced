@@ -30,7 +30,7 @@ export const U1L1 = {
       La migración de componentes de clases a componentes funcionales es un proceso que se puede realizar en proyectos existentes si se desea aprovechar las ventajas y la sintaxis más concisa de los componentes funcionales, de ahí la importancia de entender la API de ambos componentes. En los editores hay un ejemplo de cómo se declara un estado, y se actualiza el mismo en ambos componentes.<br/>
       <br/>
     `, 
-    image: ""
+    image: "",
   }
   ]
 };

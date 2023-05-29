@@ -1,6 +1,8 @@
 import { useState, useRef, Fragment } from 'react';
-import {AccordionDataProps, AccordionItemProps} from './types';
+import { useNavigate } from 'react-router-dom';
+import {AccordionDataProps, AccordionItemProps, ContentProps} from './types';
 import {LinkIcon,AccordionBody, AccordionContainer, AccordionContent, AccordionInner, AccordionItem, AccordionTitle, Container, InnerSection, Section} from './styled';
+import IndexList from './IndexList';
 
 export const Accordion = ({ data }: { data: Array<AccordionDataProps> }) => {
   const [currentAccordion, setCurrentAccordion] = useState(0);
@@ -44,10 +46,17 @@ const AccordionItems = ({
   setBodyHeight,
   bodyHeight
 }: AccordionItemProps) =>{
+  const navigate  = useNavigate();
+
+  const handleNavigation = (href: string, arr: Array<ContentProps>, title: string) => {
+    localStorage.removeItem("valueOne");
+    localStorage.removeItem("valueTwo");
+    navigate(href, { state: { content: arr, title } });
+  };
   return   (
     <Fragment>
       {
-        accordionContent.map(({ title, content, link }, i: number) => (
+        accordionContent.map(({ title, content, link, image }, i: number) => (
           <AccordionItem key={`accordion-item-${i}`}>
             <AccordionTitle
               onClick={() => {
@@ -59,15 +68,15 @@ const AccordionItems = ({
             >
               <div style={{ display: "flex", alignItems:"center", justifyContent: "space-between"}}>
                 {title}
-                <a href={link}>
+                <div onClick={() => handleNavigation(link, content, title)}>
                   <LinkIcon/>
-                </a>
+                </div>
               </div>
             </AccordionTitle>
-            <AccordionBody active={currentAccordion === i} bodyHeight={bodyHeight}>
+            <AccordionBody active={currentAccordion === i ? "true" : "false"} bodyheight={bodyHeight}>
               <AccordionContent ref={refs[i]}>
-                {content.map((item: any, i: number) => (
-                  <li key={i}>{JSON.stringify(item)}</li>
+                {content.map((item: ContentProps, i: number) => (
+                  <IndexList key={i} content={item} />
                 ))}
               </AccordionContent>
             </AccordionBody>

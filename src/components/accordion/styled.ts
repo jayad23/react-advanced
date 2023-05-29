@@ -10,32 +10,35 @@ export const LinkIcon = styled(HiExternalLink)`
 //Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
 export const Container = styled.main`
   position: relative;
-  text-align: start;
   font-family: Avenir;
 `;
 
 export const Section = styled.section`
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const InnerSection = styled.div`
   position: relative;
-  max-width: 500px;
+  //max-width: 500px;
+  width: 50%;
   padding: 2rem;
 `;
 
-export const AccordionContainer = styled.div``;
+export const AccordionContainer = styled.div` width: 100%; `;
 
 export const AccordionInner = styled.div`
   position: relative;
   width: 100%;
-  border: 1px solid #5C469C;
-  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 5px;
 `;
 
 export const AccordionItem = styled.div`
   &:not(:last-child) {
-    border-bottom: 1px solid #5C469C;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -45,7 +48,7 @@ export const AccordionTitle = styled.h3`
   cursor: pointer;
 `;
 
-export const AccordionBody = styled.div<{ active: boolean; bodyHeight: number}>`
+export const AccordionBody = styled.div<{ active: string; bodyheight: number}>`
   display: block;
   position: relative;
   padding: 0;
@@ -54,10 +57,10 @@ export const AccordionBody = styled.div<{ active: boolean; bodyHeight: number}>`
   overflow: hidden;
   transition: height 0.3s;
 
-  ${({ active, bodyHeight }) =>
-    active &&
+  ${({ active, bodyheight }) =>
+    active === "true" &&
     css`
-      height: ${bodyHeight}px;
+      height: ${bodyheight}px;
     `}
 `;
 

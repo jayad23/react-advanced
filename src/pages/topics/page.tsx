@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { SectionCardProps } from "./types";
-import {SectionCard} from "@components/section-card/SectionCard";
+import { Accordion } from "@components/accordion/Accordion";
+//import { SectionCardProps } from "./types";
+//import {SectionCard} from "@components/section-card/SectionCard";
 import { AiOutlineHome } from "react-icons/ai";
-import { CustomArticle, CustomSection, SectionCardContainer } from "./styled";
+import { CustomArticle, CustomSection, 
+  //SectionCardContainer 
+} from "./styled";
 import "../shared.css";
 import {topics} from "@topics/db";
 
@@ -16,13 +19,14 @@ const Topics = () => {
           <AiOutlineHome />
         </button>
       </CustomArticle>
-      <SectionCardContainer>
+      <Accordion data={topics} />
+      {/* <SectionCardContainer>
         {
           topics.map((element:SectionCardProps, idx: number) => (
             <SectionCard key={idx} {...element} />
           ))
         }
-      </SectionCardContainer>
+      </SectionCardContainer> */}
     </CustomSection>
   )
 }

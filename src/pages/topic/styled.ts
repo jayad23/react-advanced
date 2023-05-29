@@ -26,6 +26,28 @@ export const IconContainer = styled("div")`
   cursor: pointer;
 `;
 
+export const SecondIconContainer = styled("div")`
+  position: absolute;
+  z-index: 2;
+  top: 11px;
+  left: 15px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  transition: all ease-in-out .5s;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 0.10em;
+  padding-right: 0.01em;
+  &:hover{
+    border: 1px solid #eee;
+  }
+`;
+
 export const StyledEditorContainer = styled("div")`
   width: 50%;
   display: flex;

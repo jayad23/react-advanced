@@ -3,7 +3,12 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 //import { nord } from '@uiw/codemirror-theme-nord';
 
-const Editor = ({ value, onChange }: any) => {
+interface EditorProps {
+  value: string;
+  onChange: (value: string, viewUpdate: any) => void
+}
+
+const Editor = ({ value, onChange }: EditorProps) => {
 
   return (
     <CodeMirror

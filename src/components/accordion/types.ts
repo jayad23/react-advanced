@@ -1,9 +1,10 @@
 import {Dispatch,  RefObject} from "react";
-
+export type ContentProps = { development: Array<{ definition: string; image?: string; linkUrl?: string}>, title: string};
 export interface AccordionDataProps {
   title: string;
-  content: Array<{ definition: string; image?: string; linkUrl?: string }>;
+  content: Array<ContentProps>;
   link: string;
+  image: string;
 }
 
 export interface AccordionItemProps {
