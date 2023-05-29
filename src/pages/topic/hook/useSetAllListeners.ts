@@ -38,12 +38,23 @@ export const useSetAllListeners = () => {
     const compComponentButton = document.querySelector(".comp");
     const modalComponentButton = document.querySelector(".ptrl");
     const incrustadosComponentButton = document.querySelector(".incrustados");
+    const ccComponentButton = document.querySelector(".cc");
+    const renderPropsComponentButton = document.querySelector(".render-props");
+    const controlledComponentButton = document.querySelector(".controlled");
+    const containerPComponentButton = document.querySelector(".container-presentational");
+
+
+
     functionalComponentButton?.addEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
     classComponentButton?.addEventListener("click", () => handleInjectedButton("class-component-example", "two"));
     hocComponentButton?.addEventListener("click", () => handleInjectedButton("hoc", "one"));
     compComponentButton?.addEventListener("click", () => handleInjectedButton("comp", "two"));
     modalComponentButton?.addEventListener("click", () => handleInjectedButton("ptrl", "one"));
     incrustadosComponentButton?.addEventListener("click", () => handleInjectedButton("incrustados", "two"));
+    ccComponentButton?.addEventListener("click", () => handleInjectedButton("cc", "one"));
+    renderPropsComponentButton?.addEventListener("click", () => handleInjectedButton("render-props", "two"));
+    controlledComponentButton?.addEventListener("click", () => handleInjectedButton("controlled", "one"));
+    containerPComponentButton?.addEventListener("click", () => handleInjectedButton("container-presentational", "two"));
 
     return () => {
       functionalComponentButton?.removeEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
@@ -52,6 +63,10 @@ export const useSetAllListeners = () => {
       compComponentButton?.removeEventListener("click", () => handleInjectedButton("comp", "two"));
       modalComponentButton?.removeEventListener("click", () => handleInjectedButton("ptrl", "one"));
       incrustadosComponentButton?.removeEventListener("click", () => handleInjectedButton("incrustados", "two"));
+      ccComponentButton?.removeEventListener("click", () => handleInjectedButton("cc", "one"));
+      renderPropsComponentButton?.removeEventListener("click", () => handleInjectedButton("render-props", "two"));
+      controlledComponentButton?.removeEventListener("click", () => handleInjectedButton("controlled", "one"));
+      containerPComponentButton?.removeEventListener("click", () => handleInjectedButton("container", "two"));
     }
   }, []);
 

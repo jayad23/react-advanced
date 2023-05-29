@@ -1,4 +1,5 @@
 import { U1L1, U1L2, U1L3 } from "./unit-one";
+import {U2L1} from "./unit-two";
 export const topics = [
   {
     title: "1. Introducción a conceptos básicos de React",
@@ -8,13 +9,7 @@ export const topics = [
   },
   {
     title: "2. Router & Providers",
-    content: [
-      {
-        title: "Rutas protegidas vs Rutas Públicas",
-        development:[
-          { definition: "Rutas", image: ""}
-        ]
-      },
+    content: [U2L1,
       {
         title:  "Outlet & Layout Design",
         development: [
