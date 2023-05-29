@@ -93,3 +93,19 @@ button:focus-visible {
 .code-btn{
   font-size: 10px;
 }
+
+.red {
+  color: rgb(216, 124, 124);
+  font-weight: bolder;
+  font-size: 16px;
+}
+.green {
+  color: yellowgreen;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.notation {
+  font-size: 12px;
+  color: #bad5eeec;
+}

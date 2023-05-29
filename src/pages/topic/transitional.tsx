@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Editor from '@components/editor/Editor';
 import { IoCloseSharp } from "react-icons/io5";
-import { IconContainer, StyledEditorContainer, TextContainer } from './styled';
+import { IconContainer, OptionsContainer, StyledEditorContainer, TextContainer } from './styled';
 import { templateGenerator } from "./template";
 import toast from 'react-hot-toast';
 
@@ -36,40 +36,56 @@ const EditorContainer = () => {
     toast.error("Solo puedes cerrar un editor")
   };
 
-  const [injectedBtnOne, setInjectedOne] = useState<Element | null>(null);
-  const [injectedBtnTwo, setInjectedTwo] = useState<Element | null>(null);
+  const handleShowEditor = (editorId: string) => {
+    if(editorId === "one"){
+      return setShow({...show, one: true })
+    }
+    if(editorId === "two"){
+      return setShow({...show, two: true })
+    }
 
+    toast.error("Solo puedes cerrar un editor")
+  };
+  
   useEffect(() => {
-    const btnOne = document.querySelector(".one");
-    setInjectedOne(btnOne)
-    const btnTwo = document.querySelector(".two");
-    setInjectedTwo(btnTwo);
+    const handleInjectedButton = (templateSelected: string, valueInStore: string) => {
+      const { template } = templateGenerator(templateSelected);
+      valueInStore === 'one' ? 
+      localStorage.setItem("valueOne", JSON.stringify(template)) : 
+      localStorage.setItem("valueTwo", JSON.stringify(template));
+      valueInStore === 'one' ? 
+      setValueOne(template) : 
+      setValueTwo(template);
+    };
+
+    const functionalComponentButton = document.querySelector(".one");
+    const classComponentButton = document.querySelector(".two");
+    const hocComponentButton = document.querySelector(".hoc");
+    const compComponentButton = document.querySelector(".comp");
+    functionalComponentButton?.addEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
+    classComponentButton?.addEventListener("click", () => handleInjectedButton("class-component-example", "two"));
+    hocComponentButton?.addEventListener("click", () => handleInjectedButton("hoc", "one"));
+    compComponentButton?.addEventListener("click", () => handleInjectedButton("comp", "two"));
+
     return () => {
-      btnOne?.removeEventListener("click", () => injectedBtnOne);
-      btnTwo?.removeEventListener("click", () => injectedBtnTwo);
+      functionalComponentButton?.removeEventListener("click", () => handleInjectedButton("functional-component-example", "one"));
+      classComponentButton?.removeEventListener("click", () => handleInjectedButton("class-component-example", "two"));
+      hocComponentButton?.removeEventListener("click", () => handleInjectedButton("hoc", "one"));
+      compComponentButton?.removeEventListener("click", () => handleInjectedButton("comp", "two"));
     }
   }, []);
-
-  injectedBtnOne?.addEventListener("click", () => {
-    const { template } = templateGenerator("functional-component-example");
-    localStorage.setItem("valueOne", JSON.stringify(template));
-    setValueOne(template);
-  });
-
-  injectedBtnTwo?.addEventListener("click", () => {
-    const { template } = templateGenerator("class-component-example");
-    localStorage.setItem("valueTwo", JSON.stringify(template));
-    setValueTwo(template);
-  });
 
   return (
     <StyledEditorContainer>
       {
         show.one && (
           <TextContainer height={show.one && show.two ? 50 : 100}>
-            <IconContainer onClick={() => handleHideEditor("one")}>
-              <IoCloseSharp color="white" />
-            </IconContainer>
+            <OptionsContainer>
+              {!show.two && (<button onClick={() => handleShowEditor("two")} className='code-btn'>ver editor 2</button>)}
+              <IconContainer onClick={() => handleHideEditor("one")}>
+                <IoCloseSharp color="white" />
+              </IconContainer>
+            </OptionsContainer>
             <Editor value={valueOne} onChange={onChangeOne} />
           </TextContainer>
         )
@@ -77,9 +93,12 @@ const EditorContainer = () => {
       {
         show.two && (
           <TextContainer height={show.one && show.two ? 50 : 100}>
-            <IconContainer onClick={() => handleHideEditor("two")}>
-              <IoCloseSharp color="white" />
-            </IconContainer>
+            <OptionsContainer>
+              { !show.one && (<button onClick={() => handleShowEditor("one")} className='code-btn'>ver editor 1</button>)}
+              <IconContainer onClick={() => handleHideEditor("two")}>
+                <IoCloseSharp color="white" />
+              </IconContainer>
+            </OptionsContainer>
             <Editor value={valueTwo} onChange={onChangeTwo} />
           </TextContainer>
         )

@@ -19,11 +19,33 @@ export const DefinitionContainer = styled("div")`
 `;
 
 export const IconContainer = styled("div")`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  transition: all ease-in-out .5s;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 0.10em;
+  padding-right: 0.0.9em;
+  &:hover{
+    border: 1px solid #eee;
+  }
+`;
+
+export const OptionsContainer = styled("div")`
   position: absolute;
   z-index: 2;
   right: 10px;
   padding: 0.25em;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
 `;
 
 export const SecondIconContainer = styled("div")`
@@ -42,7 +64,7 @@ export const SecondIconContainer = styled("div")`
   text-align: center;
   align-items: center;
   padding-bottom: 0.10em;
-  padding-right: 0.01em;
+  padding-right: 0.0.9em;
   &:hover{
     border: 1px solid #eee;
   }

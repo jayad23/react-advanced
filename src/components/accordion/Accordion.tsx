@@ -56,7 +56,7 @@ const AccordionItems = ({
   return   (
     <Fragment>
       {
-        accordionContent.map(({ title, content, link, image }, i: number) => (
+        accordionContent.map(({ title, content, link }, i: number) => (
           <AccordionItem key={`accordion-item-${i}`}>
             <AccordionTitle
               onClick={() => {
