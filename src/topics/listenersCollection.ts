@@ -62,6 +62,22 @@ export const injectedButtonCollection = [
     className: ".react-router-three",
     editor: "one",
     template: "react-router-three"
+  },{
+    className: ".styled-components-basic",
+    editor: "one",
+    template: "styled-components-basic"
+  },{
+    className: ".styled-components-props",
+    editor: "two",
+    template: "styled-components-props"
+  },{
+    className: ".old-styled-components-css",
+    editor: "one",
+    template: "old-styled-components-css"
+  },{
+    className: ".new-styled-components-css",
+    editor: "two",
+    template: "new-styled-components-css"
   },
 ];
 

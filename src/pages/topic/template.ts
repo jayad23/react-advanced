@@ -594,6 +594,139 @@ export default AppRouter
     }
   }
 
+  case "styled-components-basic": {
+    return {
+      template: `
+//Opción A:
+const Button = styled.button'
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+';
+//NO OLVIDES UTILIZAR BACKTICKS EN LUGAR DE COMILLAS.
+
+//Opción B:
+const Button = styled("button")'
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+';
+//NO OLVIDES UTILIZAR BACKTICKS EN LUGAR DE COMILLAS.
+
+//Opción C: Extendiendo a otro componente.
+import { BiArrowBack } from 'react-icons/bi'
+const Button = styled(BiArrowBack)'
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+';
+//NO OLVIDES UTILIZAR BACKTICKS EN LUGAR DE COMILLAS.
+      `
+    }
+  }
+
+  case "styled-components-props": {
+    return {
+      template: `
+import styled from 'styled-components';
+
+const CustomButton = styled('button')'
+  background-color: $ {props => props.color}
+'
+
+const App = () => {
+  return (
+    <div>
+      {
+        sucess && (<CustomButton color="green" />)
+      }
+      {
+        error && (<CustomButton color="crimson" />)
+      }
+    </div>
+  )
+}
+      `
+    }
+  }
+
+  case "old-styled-components-css": {
+    return {
+      template: `
+import styled, { css } from "styled-components";
+
+const CustomDivasOld = styled("div")'
+  background: red;
+  color: #fff;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  /*Estos serán los estilos default*/
+  $ {props => props.success && css' /*Esta es la condición que evalúa la prop success*/
+    background: white;
+    color: green;
+    border: 1px solid green;
+    padding: 5px;
+    border-radius: 15px;
+    /*Estos serán los estilos customizados*/
+  '}
+'
+      `
+    }
+  }
+
+  case "new-styled-components-css": {
+    return {
+      template: `
+import styled, { css } from "styled-components";
+
+const CustomThemeDiv = styled.div'
+  $ {(props) => {
+    switch (props.$mode){
+      case "dark":
+        return css'
+          background-color: black;
+          color: white;
+          padding: 20px;
+        '
+      default: 
+        return css'
+          background-color: white;
+          color: black;
+          border: 1px solid black;
+          padding: 20px;
+        '
+    }
+  }}
+'
+
+export default function App() {
+  return (
+    <div>
+      <CustomThemeDiv>
+        <h1>Hello Guys!</h1>
+        <p>Start coding to see some magic happen :)</p>
+      </CustomThemeDiv>
+      <CustomThemeDiv $mode="dark">
+        <h1>Hello StackBlitz!</h1>
+        <p>Start coding to see some magic happen :)</p>
+      </CustomThemeDiv>
+    </div>
+  );
+}
+      `
+    }
+  }
+
   case "one":
     return {
       template: "// (Editor 1.) Empieza tu código aquí!"
