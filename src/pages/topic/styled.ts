@@ -22,17 +22,15 @@ export const IconContainer = styled("div")`
   width: 25px;
   height: 25px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 100%;
   transition: all ease-in-out .5s;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding-bottom: 0.10em;
-  padding-right: 0.0.9em;
   &:hover{
-    border: 1px solid #eee;
+    border: 2px solid #eee;
   }
 `;
 
@@ -56,7 +54,8 @@ export const SecondIconContainer = styled("div")`
   width: 25px;
   height: 25px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  //border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid #8696FE;
   border-radius: 100%;
   transition: all ease-in-out .5s;
   display: flex;
@@ -65,8 +64,9 @@ export const SecondIconContainer = styled("div")`
   align-items: center;
   padding-bottom: 0.10em;
   padding-right: 0.0.9em;
+  padding-top: 2px;
   &:hover{
-    border: 1px solid #eee;
+    border: 2px solid #eee;
   }
 `;
 
@@ -107,5 +107,17 @@ export const StickyTitle = styled("h3")`
   //border: 1px solid rgba( 255, 255, 255, 0.18 );
   &:hover{
     filter: drop-shadow(0 0 2em #646cffaa);
+  }
+`;
+
+export const WatchEditorButton = styled("button")`
+  background: #282c34;
+  border: none;
+  border-bottom: 2px solid crimson;
+  border-radius: 0;
+  padding-top: 0;
+  color: #eee;
+  &:hover{
+    border-bottom: 2px solid #8696FE;
   }
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Editor from '@components/editor/Editor';
 import { IoCloseSharp } from "react-icons/io5";
-import { IconContainer, OptionsContainer, StyledEditorContainer, TextContainer } from './styled';
+import { IconContainer, OptionsContainer, StyledEditorContainer, TextContainer, WatchEditorButton } from './styled';
 import toast from 'react-hot-toast';
 import {useSetAllListeners} from './hook/useSetAllListeners';
 
@@ -36,7 +36,7 @@ const EditorContainer = () => {
         show.one && (
           <TextContainer height={show.one && show.two ? 50 : 100}>
             <OptionsContainer>
-              {!show.two && (<button onClick={() => handleShowEditor("two")} className='code-btn'>ver editor 2</button>)}
+              {!show.two && (<WatchEditorButton onClick={() => handleShowEditor("two")} className='code-btn'>ver editor 2</WatchEditorButton>)}
               <IconContainer onClick={() => handleHideEditor("one")}>
                 <IoCloseSharp color="white" />
               </IconContainer>
@@ -49,7 +49,7 @@ const EditorContainer = () => {
         show.two && (
           <TextContainer height={show.one && show.two ? 50 : 100}>
             <OptionsContainer>
-              { !show.one && (<button onClick={() => handleShowEditor("one")} className='code-btn'>ver editor 1</button>)}
+              { !show.one && (<WatchEditorButton onClick={() => handleShowEditor("one")} className='code-btn'>ver editor 1</WatchEditorButton>)}
               <IconContainer onClick={() => handleHideEditor("two")}>
                 <IoCloseSharp color="white" />
               </IconContainer>

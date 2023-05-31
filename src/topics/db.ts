@@ -1,5 +1,6 @@
 import { U1L1, U1L2, U1L3 } from "./unit-one";
-import {U2L1} from "./unit-two";
+import {U2L1, U2L2, U2L3, U2L4, U2L5, U2L6 } from "./unit-two";
+import { U3L1, U3L2, U3L3, U3L4 } from "./unit-three";
 export const topics = [
   {
     title: "1. Introducción a conceptos básicos de React",
@@ -8,40 +9,14 @@ export const topics = [
     image: "https://img.freepik.com/free-vector/abstract-chaotic-circles-design-pattern-background_1048-16639.jpg"
   },
   {
-    title: "2. Router & Providers",
-    content: [U2L1,
-      {
-        title:  "Outlet & Layout Design",
-        development: [
-          { definition: "Outlet", image: ""}
-        ]
-      },
-      {
-        title: "Error Handler & 404 pages",
-        development: [
-          { definition: "Error", image: ""}
-        ]
-      }
-    ],
+    title: "2. Patrones de Diseño",
+    content: [U2L1, U2L2, U2L3, U2L4, U2L5, U2L6],
     link: "/temario/router_providers",
     image: "https://www.abc.org.uk/images/stories/arrows.jpg"
   },
   {
     title: "3. Code Splitting",
-    content: [
-      {
-        title: "Lazy loading",
-        development: [{ definition: "Lazy loading", image: ""}]
-      },
-      {
-        title:  "Suspense",
-        development: [{ definition: "Suspense", image: ""}]
-      },
-      {
-        title:  "Dynamic importing",
-        development:[{ definition: "Dynamic", image: ""}]
-      }
-    ],
+    content: [U3L1, U3L2, U3L3, U3L4],
     link: "/temario/code_splitting",
     image: "https://cdn.hashnode.com/res/hashnode/image/upload/v1673541584388/89c9e94d-1fbd-4969-b2d8-af0edec4937f.jpeg"
   },

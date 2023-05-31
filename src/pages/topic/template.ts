@@ -452,6 +452,156 @@ export default App;
       `
     }
   }
+
+  case "lazy": {
+    return {
+      template: `
+// En lugar de importar así:
+import MyComponent from "./pages/MyComponent";
+//importamos así:
+const MyComponent = React.lazy(() => import('./pages/MyComponent'));
+/* CON ESTE MÉTODO, NOS ASEGURAMOS QUE EL CÓDIGO SE FORME 
+  POR MEDIO DE VARIOS CHUNKS DE JS QUE SE VAYAN CARGANDO 
+  AL BROWSER A MEDIDA QUE SE REQUIERAN MEJORANDO 
+  LA EXPERIENCIA DEL USUARIO Y OPTIMIZANDO EL PERFORMANCE */
+`
+    }
+  }
+
+  case "suspense": {
+    return {
+      template: `
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./pages/MyComponent'));
+
+const App = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        //La prop Fallback permite cargar un componente (LOADER) 
+        //mientras el browser resuelve el Chunk que se va a inyectar.
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+};
+
+      `
+    }
+  }
+
+  case "react-router-one": {
+    return {
+      template: `
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const Home = lazy(() => import('./Home'));
+const About = lazy(() => import('./About'));
+const Contact = lazy(() => import('./Contact'));
+
+const App = () => {
+  return (
+    <Suspense fallback={<LoadingComponent />}>
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
+      </Routes>
+    </Suspense>
+  );
+};
+
+      `
+    }
+  }
+
+  case "react-router-two": {
+    return {
+      template: `
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const Home = lazy(() => import('./Home'));
+const About = lazy(() => import('./About'));
+const Contact = lazy(() => import('./Contact'));
+
+const pagesCollection = [
+  { id: 1, Component: Home, path: "/" },
+  { id: 2, Component: About, path: "/about" },
+  { id: 3, Component: Contact, path: "/contact" },
+]
+
+const App = () => {
+  return (
+    <Suspense fallback={<LoadingComponent />}>
+      <Routes>
+        {
+          pagesCollection.map(({ id, Component, path }) => (
+            <Route key={id} path={path} element={<Component/>} />
+          ))
+        }
+      </Routes>
+    </Suspense>
+  );
+};
+      `
+    }
+  }
+
+  case "react-router-three": {
+    return {
+      template: `
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LazyExoticComponent, lazy } from "react";
+
+const routesMap = [
+  { route: "/", name: "Welcome"}, 
+  { route: "/temario", name: "Topics"},
+  { route: "/temario/:topic", name: "Topic"},
+];
+
+
+const dynamicImporting = (param: string): LazyExoticComponent<() => JSX.Element> => {
+  return lazy(() => import('@pages/param.name/page.tsx'));
+};
+
+const pagesCollection = routesMap.map(
+  (comp, idx) => ({ 
+    id: idx, 
+    route: comp.route, 
+    Component: dynamicImporting(comp.name)}
+  )
+);
+
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {
+          pages.map(({ id, route, Component }: pagesCollectionProps) => (
+            <Route key={id} path={route} element={<Component />}  />
+          ))
+        }
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default AppRouter
+      `
+    }
+  }
+
+  case "one":
+    return {
+      template: "// (Editor 1.) Empieza tu código aquí!"
+    }
+  case "two": 
+  return {
+      template: "// (Editor 2.) Empieza tu código aquí!"
+    }
   default:
     return {
       template: "// (Editor 1.) Empieza tu código aquí!"
