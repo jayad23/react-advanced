@@ -78,6 +78,10 @@ export const injectedButtonCollection = [
     className: ".new-styled-components-css",
     editor: "two",
     template: "new-styled-components-css"
+  },{
+    className: ".life-cycle",
+    editor: "one",
+    template: "life-cycle"
   },
 ];
 

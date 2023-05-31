@@ -726,7 +726,74 @@ export default function App() {
       `
     }
   }
+  case "life-cycle": {
+    return {
+      template: `
+import React, { Component } from 'react';
+const rickApi = 'https://rickandmortyapi.com/api/character';
 
+class LifeCycleExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      index: 1,
+    };
+  }
+
+  getData = async (id) => {
+    const request = await fetch('$ {rickApi}/$ {id}');
+    const response = await request.json();
+    this.setState((prevState) => ({ ...prevState, data: response }));
+  };
+
+  componentDidMount() {
+    this.getData(this.state.index);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.index !== this.state.index) {
+      this.getData(this.state.index);
+    }
+  }
+
+  render() {
+    return (
+      <div style={{ border: '2px solid black', padding: '10px' }}>
+        <h2>Ejemplo de asincronía con Life's Cycle</h2>
+        <p>{this.state.data?.name}</p>
+        <img src={this.state.data?.image} alt={this.state.data?.name} />
+        <div style={{ marginTop: '10px' }}>
+          <button
+            onClick={() =>
+              this.setState((prevState) => ({
+                ...prevState,
+                index: prevState.index - 1,
+              }))
+            }
+          >
+            Prev -{' '}
+          </button>
+          <button
+            onClick={() =>
+              this.setState((prevState) => ({
+                ...prevState,
+                index: prevState.index + 1,
+              }))
+            }
+          >
+            Next +{' '}
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default LifeCycleExample;
+      `
+    }
+  }
   case "one":
     return {
       template: "// (Editor 1.) Empieza tu código aquí!"
