@@ -19,6 +19,11 @@ const Topics = () => {
           <AiOutlineHome />
         </button>
       </CustomArticle>
+      <div>
+        <a href="https://stackblitz.com/edit/react-jylspa?file=src%2FApp.js" target="_blank">
+          <code>aquí podrás encontrar la compilación de todos los ejercicios que verás en este curso.</code>
+        </a>
+      </div>
       <Accordion data={topics} />
       {/* <SectionCardContainer>
         {
