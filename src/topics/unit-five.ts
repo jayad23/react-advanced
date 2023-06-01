@@ -50,7 +50,7 @@ export const U5L2 = {
       </a>
       <br/>
       En este ejemplo, se crea un nuevo AbortController y se obtiene la señal <code><span className="white">signal</span></code> del controller. Luego, la señal se pasa como una opción en la configuración de la solicitud de <code><span className="purple">fetch()</span></code>. Cuando se llama al método <code><span className="purple">abort()</span></code> del controller, la solicitud se cancela y se captura el <code><span className="pink">error</span></code> AbortError.<br/>
-      <br/>
+      Ejemplo de Controller en useEffect: <button className="code-btn abort-controller">Ver</button>
     `, 
     image: "",
   }
@@ -62,14 +62,34 @@ export const U5L3 = {
   development:[
     { 
       definition: `
-      <i><span className="red">PROPS</span></i>: <button className="code-btn styled-components-props">Ver Ejemplo</button> <br/><br/>Styled Components también te permite utilizar propiedades dinámicas en tus estilos. Puedes pasar propiedades al componente estilizado y utilizarlas en tus estilos CSS. Ten presente debuggear en consola cómo el browser interpreta esas props; en algunas ocasiones puede tomar como booleanos propiedades que espera que sean strings, y tendrás que hacer el re-ajuste.<br/>
+      React Query es una librería para manejos asíncronicos que se ha abierto paso en la comunidad React ganando relevancia por las mejoras que propone.<br/>
+      Típicamente, tal como se muestra en los ejemplos anteriores, useEffect es el hook por el que se ejecuta un <code><span className="white">fetch()</span></code> tan pronto se monta el componente.<br/>
+      Sin embargo, deja otros elementos sin atender a los que el programador debe prestar atención: <br/>
+      <ul className="injected-list">
+        <li>Evitar abuso de recursos API.</li>
+        <li>Manejo de estado loading / error / data </li>
+        <li>Loops infinitos o actualizaciónes en estado que detonen efectos secundarios indeseados.</li>
+      </ul>
       <br/>
-      <i><span className="red">CSS</span></i>: <button className="code-btn styled-components-props">Ver Ejemplo</button> <br/><br/>css es también una función de styled-components que te permite evaluar una condición, y aplicar todo un grupo de estilos únicamente cuando la condición evalúe a true. De lo contrario, aplica por default todos los estilos que estén declarados por fuera de la función css.<br/>
-      La <button className="code-btn old-styled-components-css">antigua implementación</button> es más propia de la libreía, mientras que la <button className="code-btn new-styled-components-css">nueva implementación</button> es más orientada a Javascript en general, sin descartar la función css-
+      Todos estos elementos se evalúan dentro del planteamiento del proyecto y la necesidad del mismo en mantener un estado local o un estado global, y sobre qué elementos deberían existir en ambos estados
+      cuando estos coexisten en el proyecto, lo cual es en la mayoría de casos.<br/>
       <br/>
-      <a href="https://i.ibb.co/xF15T2G/Screenshot-2023-05-31-at-12-35-46.png" target="_blank"><img alt="props-styled-components" src="https://i.ibb.co/xF15T2G/Screenshot-2023-05-31-at-12-35-46.png" className="injected-img" /></a>
+      React Query se encarga de todos esos problemas, y uno más:<br/>
+      <ul className="injected-list">
+        <li>Evita el abuso de recursos API con su habilidad de cachear los datos antes de procesar una nueva solicitud.</li>
+        <li>Manejo de estado loading / error / data / isFetched y muchas propiedades más que retorna el hook <span className="green">useQuery()</span>.</li>
+        <li>Evita loops infinitos o actualizaciónes en estado que detonen efectos secundarios indeseados ya que no require ser encapsulado en un useEffect, y realiza tu tarea de forma automática tan pronto el componente se ha montado.<br/></li>
+      </ul>
       <br/>
-      <br/>
+      ¿Cómo lo hacemos? <br/>
+      <ul className="injected-list">
+        <li>instalamos la lib. <code><span className="green">npm i react-query</span></code></li>
+        <li>Configurar el Provider y Cliente desde el punto más alto de la app.</li>
+        <li><img src="https://i.ibb.co/cN8wjnB/Screenshot-2023-06-01-at-16-57-18.png" alt="query-provider" className="injected-img"/></li>
+        <br/><i><span className="red">En este punto, ya deberíamos tener el proyecto funcionando sin problemas</span></i>
+        <br/><li>Para realizar <code><span className="green">GET</span></code> usamos el hook <button className="code-btn useQuery"><span className="pink">useQuery()</span></button></li>
+        <li>Para realizar <code><span className="green">POST - PATCH - PUT</span></code> usamos el hook <button className="code-btn useMutation"><span className="pink">useMutation()</span></button></li>
+      </ul>
     `, 
     image: "",
   }

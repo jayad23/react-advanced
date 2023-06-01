@@ -3,6 +3,7 @@ import {U2L1, U2L2, U2L3, U2L4, U2L5, U2L6 } from "./unit-two";
 import { U3L1, U3L2, U3L3, U3L4 } from "./unit-three";
 import {U4L1, U4L2, U4L3, U4L4} from "./unit-four";
 import { U5L1, U5L2, U5L3, U5L4 } from './unit-five';
+import {EVALUATION1, EVALUATION2, EVALUATION3, EVALUATION4} from "./exerciseEvaluations";
 export const topics = [
   {
     title: "1. Introducción a conceptos básicos de React",
@@ -32,6 +33,11 @@ export const topics = [
     title: "5. Manejo de Asincronías",
     content: [U5L1, U5L2, U5L3, U5L4],
     link: "/temario/http_requests",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgPLL_8S4LsW41PFXjrREMnjY0EUGq9M4pQ&usqp=CAU"
+  },{
+    title: "6. Ejercicios y Evaluaciones.",
+    content: [EVALUATION1, EVALUATION2, EVALUATION3, EVALUATION4],
+    link: "/temario",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgPLL_8S4LsW41PFXjrREMnjY0EUGq9M4pQ&usqp=CAU"
   }
 ];

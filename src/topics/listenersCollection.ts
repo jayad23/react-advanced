@@ -82,7 +82,19 @@ export const injectedButtonCollection = [
     className: ".life-cycle",
     editor: "one",
     template: "life-cycle"
-  },
+  },{
+    className: ".abort-controller",
+    editor: "two",
+    template: "abort-controller"
+  },{
+    className: ".useQuery",
+    editor: "one",
+    template: "useQuery"
+  },{
+    className: ".useMutation",
+    editor: "two",
+    template: "useMutation"
+  }
 ];
 
 export interface buttonProps {

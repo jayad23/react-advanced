@@ -794,6 +794,110 @@ export default LifeCycleExample;
       `
     }
   }
+  case "abort-controller": {
+    return {
+      template: `
+import { useState, useEffect } from 'react';
+
+export const FetchDataWithController = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const getData = async () => {
+      const request = await fetch('url', { signal });
+      const json = await request.json();
+      setData(json);
+    };
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
+  return <div>{JSON.stringify(data)}</div>;
+};
+      `
+    }
+  }
+
+  case "useQuery":{
+    return {
+      template: `
+import React from 'react';
+import { useQuery } from 'react-query';
+const rickApi = 'https://rickandmortyapi.com/api/character';
+
+const getData = async () => await fetch(rickApi);
+
+export default function App() {
+  const query = useQuery({
+    queryKey: 'AllData',
+    queryFn: getData,
+  });
+  console.log(query);
+  return (
+    <div>
+      <h1>useQuery</h1>
+      <ul>
+        <li>getData es una función que retorna una promesa.</li>
+        <li>useQuery se importa de 'react-query'</li>
+        <li>
+          'query' es un objeto que contiene data, isLoading, status,
+          fetchStatus, error y más propiedades.
+        </li>
+        <li>
+          El Hook recibe una de dos cosas: 1. Dos parámetros, un string y la
+          promesa. Ejemplo: const query = useQuery('allData', getData); 2. Un
+          parámetro construido como objeto con al menos, dos propiedades:
+          {JSON.stringify({ queryKey: 'string', queryFn: 'la promesa' })}
+        </li>
+        <li>
+          El queryKey sirve para que react-query sepa qué datos ya se han
+          solicidato y gestionar el cache de los datos.
+        </li>
+      </ul>
+      {JSON.stringify(query.data)}
+    </div>
+  );
+}
+      `
+    }
+  }
+
+  case "useMutation": {
+    return {
+      template:`
+import React from "react";
+import { useMutation } from "react-query";
+
+const App = () => {
+  const queryClient = useQueryClient()
+  const { mutate } = useMutation(postData, {
+    onSuccess: (data) => {
+      //Effectos (código) que se quieran ejecutar si la respuesta es OK.
+      //limpiar el cache: queryClient.invalidateQueries('allData');
+    },
+    onError: (error) => {
+      // Código con el que queramos manejar errores.
+      // Alertas, Toast notifiers, etc.
+    }
+  })
+
+  return (
+    <div>
+      <h1>useMutation: </h1>
+      <button onClick={() => mutate({ id: 'ABSGCJS6152'}, { DATOS_A_ACTUALIZAR })}>
+        Actualizar Valor
+      </button>
+    </div>
+  )
+}
+      `
+    }
+  }
+
   case "one":
     return {
       template: "// (Editor 1.) Empieza tu código aquí!"
